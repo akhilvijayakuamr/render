@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Sales Report</title>
+</head>
+<body>
+    <h2>Daily Sales Report</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Date</th>
+                <th>Total Sales</th>
+                <th>Total Ordered</th>
+                <th>Existing Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in daily_sales %}
+                <tr>
+                    <td>{{ item.product__name }}</td>
+                    <td>{{ item.day|date:'Y-m-d' }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.totel_sales}}</td>
+                    <td>{{ item.existing_quantity }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Weekly Sales Report</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Week</th>
+                <th>Total Sales</th>
+                <th>Total Ordered</th>
+                <th>Existing Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in weekly_sales_data %}
+                <tr>
+                    <td>{{ item.product__name }}</td>
+                    <td>{{ item.week|date:'Y-W' }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.total_sales }}</td>
+                    <td>{{ item.existing_quantity }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h2>Monthly Sales Report</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Month</th>
+                <th>Total Sales</th>
+                <th>Total Ordered</th>
+                <th>Existing Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in monthly_sales_data %}
+                <tr>
+                    <td>{{ item.product__name }}</td>
+                    <td>{{ item.month|date:'Y-m' }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.total_sales }}</td>
+                    <td>{{ item.existing_quantity }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h2>Yearly Sales Report</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Year</th>
+                <th>Total Sales</th>
+                <th>Total Ordered</th>
+                <th>Existing Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in yearly_sales_data %}
+                <tr>
+                    <td>{{ item.product__name }}</td>
+                    <td>{{ item.year|date:'Y' }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.total_sales }}</td>
+                    <td>{{ item.existing_quantity }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

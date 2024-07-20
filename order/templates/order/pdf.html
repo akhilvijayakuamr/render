@@ -1,0 +1,137 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+</head>
+<body>
+    
+   
+    <div class="card">
+      <div class="card-body">
+        <div class="container mb-5 mt-3">
+          <div class="row d-flex align-items-baseline">
+            <div class="col-xl-9">
+              <p style="color: #7e8d9f;font-size: 20px;">Invoice >> <strong>ID: #123-123</strong></p>
+            </div>
+            <div class="col-xl-3 float-end">
+              <a class="btn btn-light text-capitalize border-0" data-mdb-ripple-color="dark"><i
+                  class="fas fa-print text-primary"></i> Print</a>
+              <a class="btn btn-light text-capitalize" data-mdb-ripple-color="dark"><i
+                  class="far fa-file-pdf text-danger"></i> Export</a>
+            </div>
+            <hr>
+          </div>
+            <div class="div" id="mn">
+              <div class="container">
+                <div class="col-md-12">
+                  <div class="text-center">
+                    <i class="fab fa-mdb fa-4x ms-0" style="color:#5d9fc5 ;"></i>
+                    <p class="pt-0">Gamers</p>
+                  </div>
+        
+                </div>
+        
+        
+                <div class="row">
+                  <div class="col-xl-8">
+                    <ul class="list-unstyled">
+                      <li class="text-muted">To: <span style="color:#5d9fc5 ;">{{item.order.user.first_name}}</span></li>
+                      <li class="text-muted">{{ item.order.address.house_no }}, {{ item.order.address.street }},  {{ item.order.address.city }}</li>
+                      <li class="text-muted">{{ item.order.address.state }}, {{ item.order.address.post_code }}</li>
+                      <li class="text-muted"><i class="fas fa-phone"></i>{{ item.order.address.phone_no  }}</li>
+                    </ul>
+                  </div>
+                  <div class="col-xl-4">
+                    <p class="text-muted">Invoice</p>
+                    <ul class="list-unstyled">
+                          
+                      <li class="text-muted"><i class="fas fa-circle" style="color:#84B0CA ;"></i> <span
+                          class="fw-bold">Creation Date: </span>{{item.order.date}}</li>
+                      <li class="text-muted"><i class="fas fa-circle" style="color:#84B0CA ;"></i> <span
+                          class="me-1 fw-bold">Status:</span><span class="badge bg-warning text-black fw-bold">
+                          {{item.order.status}}</span></li>
+                    </ul>
+                  </div>
+                </div>
+        
+                <div class="row my-2 mx-1 justify-content-center">
+                  <table class="table table-striped table-borderless">
+                    <thead style="background-color:#84B0CA ;" class="text-white">
+                      <tr>
+                        
+                        <th scope="col">Description</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Unit Price</th>
+                        <th scope="col">Shipping</th>
+                        <th scope="col">Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                      
+                        <td>{{item.product.name}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>₹{{item.product.selling_price}}</td>
+                        <td>₹10</td>
+                        <td>₹{{item.order.amount}}</td>
+                      </tr>
+                    </tbody>
+        
+                  </table>
+                </div>
+                <div class="row">
+                  <div class="col-xl-8">
+                    <p class="ms-3">Add additional notes and payment information</p>
+        
+                  </div>
+                  <div class="col-xl-3">
+                    <ul class="list-unstyled">
+                      <li class="text-muted ms-3"><span class="text-black me-4">SubTotal</span>₹{{item.product.selling_price}}</li>
+                      <li class="text-muted ms-3 mt-2"><span class="text-black me-4">Shipping</span>₹10</li>
+                    </ul>
+                    <p class="text-black float-start"><span class="text-black me-3"> Total Amount</span><span
+                        style="font-size: 25px;">₹{{item.order.amount}}</span></p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-xl-10">
+                    <p>Thank you for your purchase</p>
+                  </div>
+                  <div class="col-xl-2">
+                   
+                  </div>
+                </div>
+            </div>
+            
+          
+            
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-3"><button onclick="myfun('mn')" type="button" class="btn btn-primary text-capitalize"
+            style="background-color:#60bdf3 ;" >Genarate PDF</button></div>
+        </div>
+        
+    
+      </div>
+    </div>
+    
+        <!-- Latest compiled JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript">
+          function myfun(pa){
+            var b =document.body.innerHTML;
+            var d = document.getElementById(pa).innerHTML;
+            document.body.innerHTML=d;
+            window.print();
+
+          }
+        </script>
+</body>
+</html>
